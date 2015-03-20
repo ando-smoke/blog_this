@@ -1,0 +1,12 @@
+<h1>Blog This!</h1>
+
+<h3>Posts:</h3>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= post.title %>
+      (<%= post.created_at.strftime('%m/%d/%y %I:%M %p') %>)
+    </li>
+  <% end %>
+</ul>
