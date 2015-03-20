@@ -4,6 +4,9 @@
 <br />
 <p><%= @post.body %></p>
 
+<%= link_to 'Edit Post', edit_post_path(@post),
+  class: 'btn btn-info' %>
+
 <hr />
 
 <%= link_to 'Back to Home Page', posts_path %>
