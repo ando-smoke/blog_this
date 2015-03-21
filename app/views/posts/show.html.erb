@@ -1,5 +1,5 @@
 <% content_for(:title, 'Post | Blog This!') %>
-
+<hr />
 <h3><%= @post.title %></h3>
 <br />
 <p><%= @post.body %></p>
@@ -9,6 +9,18 @@
 <%= link_to 'Delete Post', post_path(@post),
   { :data => { :method => 'delete' },
     :class => 'btn btn-danger' } %>
+
+<hr />
+
+<h4>Comments for this post:</h4>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <%= comment.body %>
+    </li>
+  <% end %>
+</ul>
 
 <hr />
 
