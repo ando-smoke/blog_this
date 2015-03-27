@@ -7,7 +7,7 @@ describe 'the show post detail process' do
       title: 'Two weeks to go!',
       body: 'Almost there!'
     )
-    visit '/'
+    visit posts_path
     click_on 'Two weeks to go!'
     expect(page).to have_content 'weeks'
   end
