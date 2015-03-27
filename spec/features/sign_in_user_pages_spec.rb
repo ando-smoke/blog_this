@@ -16,16 +16,6 @@ describe 'the sign in a user process' do
     expect(page).to have_content 'Signed in successfully.'
   end
 
-  it 'acknowledges when the user is already signed in' do
-    FactoryGirl.create(:user)
-    visit new_user_session_path
-    fill_in 'Email', with: 'andy@amail.com'
-    fill_in 'Password', with: '12345678'
-    click_on 'Sign in'
-    click_on 'Sign In'
-    expect(page).to have_content 'already signed in.'
-  end
-
   it 'gives an error when no email address is entered' do
     visit new_user_session_path
     click_on 'Sign in'

@@ -2,12 +2,16 @@ require 'rails_helper'
 
 describe "the add a post process" do
   it "takes you to a new post page" do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
     visit posts_path
     click_on 'Add New Post'
     expect(page).to have_content 'New Post'
   end
 
   it "adds a new post" do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
     visit posts_path
     click_on 'Add New Post'
     fill_in 'Title', :with => 'My first week at camp'
@@ -17,6 +21,8 @@ describe "the add a post process" do
   end
 
   it "gives error when no post title is entered" do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
     visit posts_path
     click_on 'Add New Post'
     click_on 'Create Post'
