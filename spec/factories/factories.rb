@@ -14,6 +14,5 @@ FactoryGirl.define do
   factory(:comment) do
     body('I totally agree.')
     post
-    user
   end
 end
