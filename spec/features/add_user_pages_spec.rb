@@ -16,9 +16,9 @@ describe 'the add a new user process' do
     expect(page).to have_content 'signed up successfully.'
   end
 
-  it 'gives an error when no comment body is entered' do
+  it 'gives an error when no email address is entered' do
     visit new_user_registration_path
     click_on 'Sign up'
-    expect(page).to have_content 'errors' 
+    expect(page).to have_content 'errors'
   end
 end
