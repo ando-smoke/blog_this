@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% unless params[:controller] == 'home' ||
-    params[:controller] =~ /devise.*/ %>
+  <% unless !user_signed_in? &&
+    (params[:controller] =~ /(home|devise.*)/) %>
     <%= render 'home/navbar' %>
   <% end %>
 
