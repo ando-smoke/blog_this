@@ -14,6 +14,8 @@ group :development do
   gem 'byebug'
   gem 'web-console'
   gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'quiet_assets'
 end
 
@@ -25,4 +27,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
