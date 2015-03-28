@@ -6,7 +6,8 @@
   <% @posts.each do |post| %>
     <li>
       <%= link_to post.title +
-        ' (' + post.created_at.strftime('%m/%d/%y %I:%M %p') + ')',
+        ' (' + post.created_at.strftime('%m/%d/%y %I:%M %p') +
+        ' - ' + post.user.email + ')',
           post_path(post) %>
     </li>
   <% end %>
