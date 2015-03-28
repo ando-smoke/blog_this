@@ -1,8 +1,7 @@
 Blog This!
 ======================
 
-Manages a simple blog with posts and underlying comments for a
-single user.
+Manages a simple blog with posts and underlying comments.
 
 Installation
 ------------
@@ -21,6 +20,7 @@ TEST / DEVELOPMENT / PRODUCTION:
   jquery-rails
   turbolinks
   bootstrap-sass
+  devise
 
 TEST / DEVELOPMENT:
   rspec-rails
@@ -29,11 +29,14 @@ DEVELOPMENT:
   byebug
   web-console
   spring
+  better_errors
+  binding_of_caller
   quiet-assets
 
 TEST:
   shoulda-matchers
   capybara
+  factory_girl_rails
 ```
 
 If you want to run the included Gemfile, enter the following statements into
@@ -68,17 +71,34 @@ DATABASES:
   blog_this_test
 
 TABLES:
+  users
+    id (integer PRIMARY KEY)
+    email (varchar DEFAULT "" NOT NULL)
+    encrypted_password (varchar DEFAULT "" NOT NULL)
+    reset_password_token (varchar)
+    reset_password_sent_at (timestamp)
+    remember_created_at (timestamp)
+    sign_in_count (varchar DEFAULT 0 NOT NULL)
+    current_sign_in_at (timestamp)
+    last_sign_in_at (timestamp)
+    current_sign_in_ip (inet)
+    last_sign_in_ip (inet)
+    created_at (timestamp)
+    updated_at (timestamp)
+
   posts
     id (integer PRIMARY KEY)
     title (varchar)
     body (text)
+    user_id (integer FOREIGN KEY REFERENCES users(id))
     created_at (timestamp)
     updated_at (timestamp)
 
   comments
     id (integer PRIMARY KEY)
     body (text)
-    post_id (integer)
+    post_id (integer FOREIGN KEY REFERENCES posts(id))
+    user_id (integer FOREIGN KEY REFERENCES users(id))
     created_at (timestamp)
     updated_at (timestamp)
 ```
@@ -95,25 +115,29 @@ and enter the following address:
 localhost:3000/
 ```
 
-The initial home page displays a list of current post titles currently
-within the blogging app. Clicking on *Add New Post* allows for new
-posts to be added to the blog. Once entered, an individual post
-can be clicked upon for detail of the post title and message body.
-The provided *Edit Post* and *Delete Post* buttons provide the
-expected functionality.
+Alternatively, this app has been deployed onto Heroku and is
+accessible at the following url:
 
-Currently, the app only allows for a single user. However, in
-expectation of multiple users allowed for the app, a comments
-feature has been added so that individual comments can be added
-and tied to a given blog post. Within the post detail page, all
-currently added comments are displayed towards the bottom of
-the page. As with posts, the user can either add, edit or delete
-a comment by clicking on the appropriately named button or links.
+```url
+https://aqueous-peak-7572.herokuapp.com/
+```
+
+The initial welcome page allows for a user to either *Sign Up*
+for a new user account, *Sign In* with a preexisting account,
+or to simply *Enter As Guest*. Upon successful user
+authentication/authorization (or guest user enter), all blog
+posts currently in the system are displayed. Clicking on *Add
+New Post* allows for new posts to be added to the blog.
+Once entered, an individual post can be clicked upon for detail
+of the post title and message body. The provided *Edit Post* and
+*Delete Post* buttons provide the expected functionality.
+Of note, users signed in as a guest are not authorized to add
+new posts or comments.
 
 Known Bugs
 ----------
 
-None as of 2015-03-20.
+None as of 2015-03-27.
 
 Author
 ------
