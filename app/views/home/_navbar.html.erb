@@ -1,10 +1,13 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to "Blog This!", posts_path, class: 'navbar-brand' %>
+      <%= link_to "Blog This!", root_path, class: 'navbar-brand' %>
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav">
+        <li>
+          <%= link_to "All Posts", posts_path %>
+        </li>
         <% if user_signed_in? %>
           <li>
             <%= link_to "Edit Profile", edit_user_registration_path %>
@@ -13,9 +16,6 @@
             <%= link_to "Sign Out", destroy_user_session_path,
               method: :delete %>
           </li>
-          <p class="navbar-text navbar-right">
-            Signed in as <strong><%= current_user.email %></strong>
-          </p>
         <% else %>
           <li>
             <%= link_to "Sign Up", new_user_registration_path %>
@@ -25,6 +25,17 @@
           </li>
         <% end %>
       </ul>
+
+      <p class="navbar-text navbar-right">
+        Signed in as
+        <strong>
+          <% if user_signed_in? %>
+            <%= current_user.email %>
+          <% else %>
+            Guest
+          <% end %>
+        </strong>
+      </p>
     </div>
   </div>
 </nav>

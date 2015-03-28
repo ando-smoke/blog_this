@@ -7,4 +7,8 @@
     class: 'btn btn-primary' %>
   <%= link_to 'Sign In', new_user_session_path,
     class: 'btn btn-success' %>
+  <% if !user_signed_in? %>
+    <%= link_to 'Enter As Guest', posts_path,
+      class: 'btn btn-warning' %>
+  <% end %>
 </div>

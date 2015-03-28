@@ -7,9 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if user_signed_in? %>
-    <%= render 'home/navbar' %>
-  <% end %>
+  <%= render 'home/navbar' %>
 
   <div class='container'>
     <%= flash[:alert] %>
