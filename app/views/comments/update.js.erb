@@ -1,0 +1,5 @@
+$('#edit_comment_<%= @comment.id %>').remove();
+$('#new_comment_link').show();
+$('#post_<%= @comment.post.id %>_comment_<%= @comment.id %>')
+  .html('<%= j render @comment %>')
+$('#flash').html('<%= j render "layouts/notices" %>');

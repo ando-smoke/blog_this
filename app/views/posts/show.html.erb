@@ -1,4 +1,6 @@
 <% content_for(:title, 'Post | Blog This!') %>
+<% use_remote = current_user.nil? ? false : true %>
+
 <hr />
 <h3><%= @post.title %></h3>
 <br />
@@ -14,16 +16,9 @@
 
 <h4>Comments for this post:</h4>
 
-<ul>
-  <% @post.comments.each do |comment| %>
-    <li>
-      <%= comment.body %> (<%= comment.user.email %>) |
-      <%= link_to 'Edit', edit_post_comment_path(@post, comment) %> |
-      <%= link_to 'Delete', post_comment_path(@post, comment),
-        :data => { :method => "delete" } %>
-    </li>
-  <% end %>
+<ul id='all_post_comments'>
+  <%= render @post.comments %>
 </ul>
 
 <%= link_to 'Add New Comment', new_post_comment_path(@post),
-  class: 'btn btn-primary' %>
+  id: 'new_comment_link', remote: use_remote, class: 'btn btn-primary' %>

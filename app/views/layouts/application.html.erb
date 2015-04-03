@@ -14,7 +14,12 @@
 
   <div class='container'>
     <%= flash[:alert] %>
-    <%= flash[:notice] %>
+
+    <div id="flash">
+      <% if notice.present? %>
+        <%= render 'layouts/notices' %>
+      <% end %>
+    </div>
 
     <%= yield %>
   </div>

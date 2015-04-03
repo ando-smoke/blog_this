@@ -1,0 +1,2 @@
+$('#post_<%= @comment.post.id %>_comment_<%= @comment.id %>').remove()
+$('#flash').html('<%= j render "layouts/notices" %>');

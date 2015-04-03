@@ -1,8 +1,10 @@
 <%= render 'layouts/errors', object: @comment %>
 
+<% use_remote = current_user.nil? ? false : true %>
+
 <div class='row'>
   <div class='col-md-6'>
-    <%= form_for [@post, @comment] do |f| %>
+    <%= form_for [@post, @comment], remote: use_remote do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <div class='form-group'>
         <%= f.label :body %>

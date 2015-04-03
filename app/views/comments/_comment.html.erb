@@ -1,0 +1,8 @@
+<% use_remote = current_user.nil? ? false : true %>
+<li id='post_<%= comment.post.id %>_comment_<%= comment.id %>'>
+  <%= comment.body %> (<%= comment.user.email %>) |
+  <%= link_to 'Edit', edit_post_comment_path(comment.post, comment),
+    remote: use_remote %> |
+  <%= link_to 'Delete', post_comment_path(comment.post, comment),
+    :data => { :method => "delete" }, remote: use_remote %>
+</li>

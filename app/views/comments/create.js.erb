@@ -1,0 +1,4 @@
+$('#new_comment').remove();
+$('#new_comment_link').show();
+$('#all_post_comments').append('<%= j render @comment %>')
+$('#flash').html('<%= j render "layouts/notices" %>');

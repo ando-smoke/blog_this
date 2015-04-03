@@ -10,8 +10,16 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     if @comment.save
-      flash[:notice] = "Comment successfully saved!"
-      redirect_to post_path(@comment.post)
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Comment successfully saved!"
+          redirect_to post_path(@comment.post)
+        end
+
+        format.js do
+          flash.now[:notice] = "Comment successfully saved!"
+        end
+      end
     else
       render :new
     end
@@ -26,8 +34,16 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     if @comment.update(comment_params)
-      flash[:notice] = 'Comment successfully updated!'
-      redirect_to post_path(@comment.post)
+      respond_to do |format|
+        format.html do
+          flash[:notice] = 'Comment successfully updated!'
+          redirect_to post_path(@comment.post)
+        end
+
+        format.js do
+          flash.now[:notice] = 'Comment successfully updated!'
+        end
+      end
     else
       render :edit
     end
@@ -37,8 +53,16 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
-    flash[:notice] = "Comment successfully deleted!"
-    redirect_to post_path(@post)
+    respond_to do |format|
+      format.html do
+        flash[:notice] = "Comment successfully deleted!"
+        redirect_to post_path(@post)
+      end
+
+      format.js do
+        flash.now[:notice] = "Comment successfully deleted!"
+      end
+    end
   end
 
   private
