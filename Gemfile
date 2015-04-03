@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'rest-client'
 
 group :development do
   gem 'byebug'
@@ -21,12 +22,18 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do
