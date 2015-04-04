@@ -1,12 +1,14 @@
 FactoryGirl.define do
   factory(:user) do
     email('andy@amail.com')
+    phone_number('+15035554444')
     password('12345678')
     password_confirmation('12345678')
   end
 
   factory(:user_2, class: User) do
     email('bob@amail.com')
+    phone_number('+15035553333')
     password('12345678')
     password_confirmation('12345678')
   end
