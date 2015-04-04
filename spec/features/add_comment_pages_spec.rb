@@ -9,7 +9,7 @@ describe 'the add a comment process' do
     expect(page).to have_content 'New Comment'
   end
 
-  it 'adds a new comment to a post' do
+  it 'adds a new comment to a post', vcr: true do
     post = FactoryGirl.create(:post)
     sign_in(post.user)
     visit post_path(post)

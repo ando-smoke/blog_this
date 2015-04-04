@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<twilio account sid>:<twilio auth token>@api.twilio.com/2010-04-01/Accounts/<twilio
+      account sid>/Messages.json
+    body:
+      encoding: US-ASCII
+      string: Body=New%20comment%20added%20to%20question%3A%20Best%20foodcarts%20in%20PDX&To=%2B15035554444&From=%2B15005550006
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '113'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 04 Apr 2015 00:50:55 GMT
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '742'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SMf10ba94594684d62abd5787b65ce5da5", "date_created": "Sat,
+        04 Apr 2015 00:50:55 +0000", "date_updated": "Sat, 04 Apr 2015 00:50:55 +0000",
+        "date_sent": null, "account_sid": "<twilio account sid>", "to": "+15035554444",
+        "from": "+15005550006", "body": "New comment added to question: Best foodcarts
+        in PDX", "status": "queued", "num_segments": "1", "num_media": "0", "direction":
+        "outbound-api", "api_version": "2010-04-01", "price": null, "price_unit":
+        "USD", "uri": "/2010-04-01/Accounts/<twilio account sid>/Messages/SMf10ba94594684d62abd5787b65ce5da5.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/<twilio account sid>/Messages/SMf10ba94594684d62abd5787b65ce5da5/Media.json"}}'
+    http_version: 
+  recorded_at: Sat, 04 Apr 2015 00:50:56 GMT
+recorded_with: VCR 2.9.3
