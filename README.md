@@ -21,9 +21,13 @@ TEST / DEVELOPMENT / PRODUCTION:
   turbolinks
   bootstrap-sass
   devise
+  rest-client
 
 TEST / DEVELOPMENT:
   rspec-rails
+  pry
+  dotenv-rails
+  launchy
 
 DEVELOPMENT:
   byebug
@@ -37,6 +41,13 @@ TEST:
   shoulda-matchers
   capybara
   factory_girl_rails
+  poltergeist
+  database_cleaner
+  vcr
+  webmock
+
+PRODUCTION:
+  rails_12factor
 ```
 
 If you want to run the included Gemfile, enter the following statements into
@@ -85,6 +96,7 @@ TABLES:
     last_sign_in_ip (inet)
     created_at (timestamp)
     updated_at (timestamp)
+    phone_number (varchar)
 
   posts
     id (integer PRIMARY KEY)
@@ -132,12 +144,14 @@ Once entered, an individual post can be clicked upon for detail
 of the post title and message body. The provided *Edit Post* and
 *Delete Post* buttons provide the expected functionality.
 Of note, users signed in as a guest are not authorized to add
-new posts or comments.
+new posts or comments. Finally, after every new comment is
+entered on a post, the original post user is sent a text
+message via a call to the Twilio API text message service.
 
 Known Bugs
 ----------
 
-None as of 2015-03-27.
+None as of 2015-04-03.
 
 Author
 ------
